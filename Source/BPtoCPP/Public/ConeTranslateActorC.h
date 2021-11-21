@@ -17,11 +17,29 @@ public:
 
 protected:
 	// Called when the game starts or when spawned
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 		USceneComponent* Scene;
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Components")
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
 		UStaticMeshComponent* ConeMesh;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
+		bool isUp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
+		float MinHeight;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
+		float MaxHeight;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConeActor")
+		float Max;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
+		float CurrentZ;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConeActor")
+		float Speed;
 
 	virtual void BeginPlay() override;
 
