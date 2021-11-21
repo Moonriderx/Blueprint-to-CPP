@@ -1,0 +1,4 @@
+In Game dev all booleans in Unreal are prefixed with b. If you see a uint with the b prefix it is declared as a bit field like uint8 bIsInitialized:1 The 1 in the end indicates that it only uses 1 bit. 
+bIsInitialized == true is perfectly fine to do even though it is a uint8. The reason a bit field is used instead of a bool is to save memory and the only difference between a uint8 bit field and a bool is the way it is declared.
+
+For example the number after uint specifies the Size of the Integer uint32 ist an unsigned integer with 32 Bit so it can hold values from 0 to 2^32 The same goes for uint16 (16 Bit) and uint8 (8 Bit)
