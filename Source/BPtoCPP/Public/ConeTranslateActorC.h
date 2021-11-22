@@ -13,7 +13,19 @@ class BPTOCPP_API AConeTranslateActorC : public AActor
 	
 public:	
 	// Sets default values for this actor's properties
-	AConeTranslateActorC();
+	AConeTranslateActorC(); 
+	UFUNCTION(BlueprintCallable, Category = "Cone Functions")
+		void TestFunc(int32 Val);
+
+	UFUNCTION(BlueprintCallable, Category = "Cone Functions")
+		int32 TestPureFunc() const;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Cone Functions") // for this we don't need to implement this into the cpp. The header will handle and compile this
+		void TestImplementableFunction(int32 Val);
+
+	UFUNCTION(BlueprintNativeEvent, Category = "Cone Functions")
+		void Explode();
+	    void Explode_Implementation();
 
 protected:
 	// Called when the game starts or when spawned
@@ -40,6 +52,8 @@ protected:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConeActor")
 		float Speed;
+
+
 
 	virtual void BeginPlay() override;
 

@@ -20,10 +20,28 @@ AConeTranslateActorC::AConeTranslateActorC()
 
 }
 
+void AConeTranslateActorC::TestFunc(int32 Val)
+{
+	UE_LOG(LogTemp, Warning, TEXT("Test Func Called with Value %d"), Val);
+}
+
+int32 AConeTranslateActorC::TestPureFunc() const
+{
+	return 25;
+}
+
+void AConeTranslateActorC::Explode_Implementation()
+{
+	this->Destroy();
+}
+
 // Called when the game starts or when spawned
 void AConeTranslateActorC::BeginPlay()
 {
 	Super::BeginPlay();
+
+	TestImplementableFunction(75);
+
 	isUp = true;
 	const FVector Location = GetActorLocation(); // const mean cannot be changable
 	CurrentZ = Location.Z;
@@ -54,6 +72,7 @@ void AConeTranslateActorC::Tick(float DeltaTime)
 
 	if (CurrentZ > MaxHeight) {
 		isUp = false;
+		Explode();
 	}
 	else if (CurrentZ < MinHeight) {
 		isUp = true;
