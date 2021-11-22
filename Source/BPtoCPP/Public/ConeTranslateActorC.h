@@ -15,9 +15,12 @@ public:
 	// Sets default values for this actor's properties
 	AConeTranslateActorC(); 
 	UFUNCTION(BlueprintCallable, Category = "Cone Functions")
-		void TestFunc(int32 Val);
+		void TestFunc(const int32 Val);
 
 	UFUNCTION(BlueprintCallable, Category = "Cone Functions")
+		void TestInputOutput(const int32 InVal, int32& OutVal);
+
+	UFUNCTION(BlueprintCallable, Category = "Cone Functions", meta=(HideSelfPin="true")) 
 		int32 TestPureFunc() const;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Cone Functions") // for this we don't need to implement this into the cpp. The header will handle and compile this
@@ -27,31 +30,36 @@ public:
 		void Explode();
 	    void Explode_Implementation();
 
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConeActor")
+			float Speed;
+
+		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+			USceneComponent* Scene;
+
+		UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+			UStaticMeshComponent* ConeMesh;
+
+		UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
+			bool isUp;
+
+		UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
+			float MinHeight;
+
+		UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
+			float MaxHeight;
+
+		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConeActor")
+			float Max;
+
+		UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
+			float CurrentZ;
+
+
+
 protected:
 	// Called when the game starts or when spawned
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-		USceneComponent* Scene;
+	
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
-		UStaticMeshComponent* ConeMesh;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
-		bool isUp;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
-		float MinHeight;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
-		float MaxHeight;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConeActor")
-		float Max;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "ConeActor")
-		float CurrentZ;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ConeActor")
-		float Speed;
 
 
 

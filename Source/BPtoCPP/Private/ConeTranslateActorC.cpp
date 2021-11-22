@@ -2,6 +2,7 @@
 
 
 #include "ConeTranslateActorC.h"
+#include <Runtime/Engine/Classes/Kismet/KismetMathLibrary.h>
 
 // Sets default values
 AConeTranslateActorC::AConeTranslateActorC()
@@ -18,11 +19,18 @@ AConeTranslateActorC::AConeTranslateActorC()
 	Speed = 50;
 	Max = 200;
 
+	
+
 }
 
-void AConeTranslateActorC::TestFunc(int32 Val)
+void AConeTranslateActorC::TestFunc(const int32 Val)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Test Func Called with Value %d"), Val);
+}
+
+void AConeTranslateActorC::TestInputOutput(const int32 InVal, int32& OutVal)
+{
+	OutVal = InVal;
 }
 
 int32 AConeTranslateActorC::TestPureFunc() const
